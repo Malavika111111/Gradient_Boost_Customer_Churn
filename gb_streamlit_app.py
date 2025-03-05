@@ -1,12 +1,12 @@
 import streamlit as st
 import pandas as pd
-import joblib
+import joblib  
 
 # Loading trained model & scaler
 rf_model = joblib.load("gradient_boost.pkl")
 scaler = joblib.load("scaler.pkl")
 
-# Loading the dataset to get training feature names
+# Loading the dataset to get training feature names 
 df = pd.read_excel("Churn (1) (2).xlsx")
 
 # Drop unnecessary columns like 'Unnamed: 0'
@@ -96,7 +96,6 @@ user_input_scaled = get_user_input()
 
 # Button to trigger the prediction
 if st.button("Predict Churn"):
-  
     # Predicting and displaying the result
     prediction = int(rf_model.predict(user_input_scaled)[0])
     if prediction == 1:
